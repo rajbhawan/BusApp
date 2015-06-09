@@ -21,7 +21,7 @@ int CurlHttpGet::writer(char *data, size_t size, size_t nmemb, std::vector<char>
 	return 0;
 }
 
-void CurlHttpGet::get() {
+vector<char> * CurlHttpGet::get() {
 	
 	CURL *curl;
 	CURLcode result;
@@ -56,11 +56,12 @@ void CurlHttpGet::get() {
 			curl_easy_cleanup(curl);
 			curl_slist_free_all(headers);
 			if(headerSize < body.size() && httpCode == 200)
-			{  std::vector<char>::iterator it=body.begin();
-			  for(;it<=body.end();it++)
-                           {
-                             cout<<*it;
-                           }
+			{ // std::vector<char>::iterator it=body.begin();
+			  //for(;it<=body.end();it++)
+                           //{
+                             //cout<<*it;
+                           //}
+                        return &body;
 			}
 			
 		}

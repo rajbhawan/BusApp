@@ -15,6 +15,6 @@ private:
 public:	
 	CurlHttpGet(const char* url);
 	virtual ~CurlHttpGet();
-	void get();
+	std::vector<char> * get();
 };
 #endif 
